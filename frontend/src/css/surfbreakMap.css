@@ -1,0 +1,6 @@
+.surfmapOverview {
+    /* TODO: change to relate sizing etc. */
+    width: 300px;
+    height: 300px;
+    background-color: var(--cerulean);
+}

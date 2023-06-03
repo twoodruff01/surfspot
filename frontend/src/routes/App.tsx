@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import '../App.css'
+import '../css/app.css'
 
 import ClickableList from '../components/ClickableList'
 import Navbar from '../components/Navbar'
@@ -7,6 +7,7 @@ import SearchBar from '../components/SearchBar'
 import SurfbreakMap from '../components/SurfbreakMap'
 
 import { SurfbreakBasicInfo, surfbreaks } from '../DummyData'
+import Footer from '../components/Footer'
 
 export default function App() {
     const [surfbreakBasicInfo, setSurfbreakBasicInfo] = useState<Array<SurfbreakBasicInfo>>([])
@@ -18,14 +19,17 @@ export default function App() {
 
     return (
         <>
-            <Navbar />
-            <div>
-                <div>
+            <header>
+                <Navbar />
+            </header>
+            <main className='regionalView'>
+                <section>
                     <SearchBar />
                     <ClickableList surfbreaks={surfbreakBasicInfo} />
-                </div>
+                </section>
                 <SurfbreakMap />
-            </div>
+            </main>
+            <Footer />
         </>
     )
 }

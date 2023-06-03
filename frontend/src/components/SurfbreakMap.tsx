@@ -1,5 +1,7 @@
+import '../css/surfbreakMap.css'
+
 export default function SurfbreakMap() {
     return (
-        <div></div>
+        <div className="surfmapOverview"></div>
     )
 }

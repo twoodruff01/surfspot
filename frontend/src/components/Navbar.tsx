@@ -1,5 +1,11 @@
+import '../css/navbar.css'
+
 export default function Navbar() {
     return (
-        <div></div>
+        <nav>
+            <p>Home</p>
+            <h1>surfspot</h1>
+            <p>Logout</p>
+        </nav>
     )
 }
