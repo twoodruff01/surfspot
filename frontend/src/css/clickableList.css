@@ -1,0 +1,16 @@
+.clickableListItem {
+    list-style-type: none;
+}
+
+.clickableListItem a {
+    text-decoration: none;
+    color: black;
+}
+
+.clickableListItem a:hover {
+    color: white;
+}
+
+/* .clickableListItem a:visited {
+    color: inherit;
+} */

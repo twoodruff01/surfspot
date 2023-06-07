@@ -1,11 +1,15 @@
+import { Link } from 'react-router-dom'
+
 import '../css/navbar.css'
 
 export default function Navbar() {
     return (
-        <nav>
-            <p>Home</p>
-            <h1>surfspot</h1>
-            <p>Logout</p>
-        </nav>
+        <header>
+            <nav>
+                <Link to={'/'} className='navLink'>Home</Link>
+                <h1>surfspot</h1>
+                <Link to={'/'} className='navLink'>Logout</Link>
+            </nav>
+        </header>
     )
 }

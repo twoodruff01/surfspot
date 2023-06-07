@@ -10,23 +10,30 @@ nav {
     align-items: stretch;
 }
 
-nav p {
+.navLink {
     /* background-color: var(--prussian-blue); */
     /* background-color: var(--pacific-cyan); */
     /* background-color: var(--blue-ncs); */
     /* background-color: var(--prussian-blue-2); */
     background-color: var(--cerulean);
+    color: black;
+    text-decoration: none;
     margin: 0;
     padding: 0.5rem;
     display: flex;
     align-items: center;
 }
 
-nav p:hover {
+.navLink:hover {
     cursor: pointer;
     opacity: 0.7;
 }
 
 nav h1 {
+    /* color: var(--prussian-blue); */
+    /* color: var(--pacific-cyan); */
+    /* color: var(--blue-ncs); */
+    /* color: var(--prussian-blue-2); */
+    color: white;
     margin: 0.5rem;
 }

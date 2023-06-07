@@ -5,8 +5,9 @@ import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import './css/normalize.css'
 import './css/index.css'
 
-import App from './routes/App.tsx'
+import Root from './routes/Root.tsx';
 import ErrorPage from './routes/ErrorPage.tsx'
+import RegionalView from './routes/RegionalView.tsx';
 import Surfbreak, {
     loader as surfbreakLoader
 } from './routes/Surfbreak.tsx';
@@ -14,14 +15,20 @@ import Surfbreak, {
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <App />,
+        element: <Root />,
         errorElement: <ErrorPage />,
+        children: [
+            {
+                path: '/',
+                element: <RegionalView />
+            },
+            {
+                path: 'surfbreaks/:surfbreakId',
+                element: <Surfbreak />,
+                loader: surfbreakLoader
+            }
+        ]
     },
-    {
-        path: 'surfbreaks/:surfbreakId',
-        element: <Surfbreak />,
-        loader: surfbreakLoader
-    }
 ])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

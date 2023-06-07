@@ -11,6 +11,8 @@ import {
     Legend,
 } from 'chart.js';
 
+import '../css/surfbreak.css'
+
 import { SurfbreakDetailedForecast, bells } from "../DummyData";
 
 ChartJS.register(
@@ -22,19 +24,6 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-
-const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: 'top' as const,
-        },
-        title: {
-            display: true,
-            text: 'Chart.js Line Chart',
-        },
-    },
-};
 
 export async function loader({ params }: { params: any }) {  // Typescript support from react-router-dom seems terrible.
     const surfbreakDetailedForecast = await getSurfBreakDetails(params.surfbreakId)
@@ -50,11 +39,24 @@ async function getSurfBreakDetails(id: number): Promise<SurfbreakDetailedForecas
 export default function SurfBreak() {
     const detailedForecast = useLoaderData() as SurfbreakDetailedForecast
 
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top' as const,
+            },
+            title: {
+                display: false,
+                text: 'Chart.js Line Chart',
+            },
+        },
+    };
+
     const labels = detailedForecast.forecast.timescale
 
-    const data = {
+    const data1 = {
         labels,
-        // detailedForecast.forecast.timescale,
         datasets: [
             {
                 label: 'Period',
@@ -71,11 +73,27 @@ export default function SurfBreak() {
         ],
     }
 
+    const data2 = {
+        labels,
+        datasets: [
+            {
+                label: 'Wind Speed',
+                data: detailedForecast.forecast.windSpeed,
+                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            },
+        ],
+    }
+
     return (
-        <>
-            <h1>Surf's up dude</h1>
+        <div className="surfbreakContainer">
             <h1>{detailedForecast.basicInfo.name}</h1>
-            <Line options={options} data={data} />
-        </>
+            <div className="chartDiv">
+                <Line options={options} data={data1} />
+            </div>
+            <div className="chartDiv">
+                <Line options={options} data={data2} />
+            </div>
+        </div>
     )
 }

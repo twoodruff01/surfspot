@@ -9,4 +9,7 @@
     /* background-color: var(--cerulean); */
     display: flex;
     justify-content: start;
+    align-items: end;
+    margin-bottom: 0;
+    margin-top: 1rem;
 }

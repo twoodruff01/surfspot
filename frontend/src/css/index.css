@@ -1,11 +1,24 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  --prussian-blue: hsla(196, 94%, 13%, 1);
-  --pacific-cyan: hsla(192, 59%, 51%, 1);
-  --blue-ncs: hsla(195, 100%, 38%, 1);
-  --prussian-blue-2: hsla(203, 49%, 18%, 1);
-  --cerulean: hsla(194, 95%, 29%, 1);
+    --prussian-blue: hsla(196, 94%, 13%, 1);
+    --pacific-cyan: hsla(192, 59%, 51%, 1);
+    --blue-ncs: hsla(195, 100%, 38%, 1);
+    --prussian-blue-2: hsla(203, 49%, 18%, 1);
+    --cerulean: hsla(194, 95%, 29%, 1);
 
-  background-color: var(--pacific-cyan);
+    background-color: var(--pacific-cyan);
+}
+
+#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    height: 100%;
 }

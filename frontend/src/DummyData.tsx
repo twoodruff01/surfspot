@@ -73,7 +73,14 @@ export const bells: SurfbreakDetailedForecast = {
             2.5, 2.5, 2.5,
         ],
         windSpeed: [
-
+            22, 22, 23,
+            15, 17, 18,
+            18, 26, 28,
+            10, 10, 11,
+            9, 9, 7,
+            5, 10, 15,
+            15, 16, 13,
+            14, 19, 17
         ],
         windDirection: [
 

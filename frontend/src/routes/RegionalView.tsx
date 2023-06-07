@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-import '../css/app.css'
+
+import '../css/regionalView.css'
 
 import ClickableList from '../components/ClickableList'
-import Navbar from '../components/Navbar'
 import SearchBar from '../components/SearchBar'
 import SurfbreakMap from '../components/SurfbreakMap'
 
 import { SurfbreakBasicInfo, surfbreaks } from '../DummyData'
-import Footer from '../components/Footer'
 
-export default function App() {
+
+export default function RegionalView() {
     const [surfbreakBasicInfo, setSurfbreakBasicInfo] = useState<Array<SurfbreakBasicInfo>>([])
 
     useEffect(() => {
@@ -19,17 +19,13 @@ export default function App() {
 
     return (
         <>
-            <header>
-                <Navbar />
-            </header>
-            <main className='regionalView'>
+            <div className='regionalView'>
                 <section>
                     <SearchBar />
                     <ClickableList surfbreaks={surfbreakBasicInfo} />
                 </section>
                 <SurfbreakMap />
-            </main>
-            <Footer />
+            </div>
         </>
     )
 }
