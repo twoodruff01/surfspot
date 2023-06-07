@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, NextFunction, Request, Response } from 'express';
 import { config } from 'dotenv'
 // import { v4 as uuid } from 'uuid'
 
@@ -9,20 +9,24 @@ config()
 const app: Express = express();
 const port = 3000;
 
-function setupRes(res: Response) {
-    // res.set('Access-Control-Allow-Origin', '*')
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000')
+function headers(req: Request, res: Response, next: NextFunction) {
+    res.set('Access-Control-Allow-Origin', 'http://localhost:5173')
     res.setHeader('Content-Type', 'application/json')
-    return res
+    next()
 }
 
-app.get('/topbreaks', (req: Request, res: Response) => {
-    setupRes(res).end(JSON.stringify(fakeDb.breaks))
+function log(req: Request, res: Response, next: NextFunction) {
+    console.log(`${req.method} ${req.url}`)
+    next()
+}
+
+app.get('/topbreaks', headers, log, (req: Request, res: Response) => {
+    res.end(JSON.stringify(fakeDb.breaks))
 });
 
-app.get('/forecast/:id', (req: Request, res: Response) => {
+app.get('/forecast/:id', headers, log, (req: Request, res: Response) => {
     let { id } = req.params
-    setupRes(res).send(JSON.stringify(fakeDb.forecasts[id]))
+    res.end(JSON.stringify(fakeDb.forecasts[id]))
 })
 
 app.listen(port, () => {

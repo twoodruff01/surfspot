@@ -12,8 +12,8 @@ import {
 } from 'chart.js';
 
 import '../css/surfbreak.css'
-
-import { SurfbreakDetailedForecast, bells } from "../DummyData";
+import { SurfbreakDetailedForecast } from "../types";
+import { getForecast } from "../apis/databaseApi";
 
 ChartJS.register(
     CategoryScale,
@@ -25,15 +25,12 @@ ChartJS.register(
     Legend
 );
 
-export async function loader({ params }: { params: any }) {  // Typescript support from react-router-dom seems terrible.
-    const surfbreakDetailedForecast = await getSurfBreakDetails(params.surfbreakId)
-    return surfbreakDetailedForecast
-}
-
-async function getSurfBreakDetails(id: number): Promise<SurfbreakDetailedForecast> {
-    // TODO: Fetch forecast data for this ID from server
-    console.log(`id from url: ${id}`)
-    return bells
+/**
+ * This is meant to pull the uuid for the surfbreak out of the url:
+ *  /surfbreaks/:id
+ */
+export async function loader({ params }: { params: any }): Promise<SurfbreakDetailedForecast> {  // Typescript support from react-router-dom seems terrible.
+    return await getForecast(params.surfbreakId)
 }
 
 export default function SurfBreak() {
@@ -53,7 +50,7 @@ export default function SurfBreak() {
         },
     };
 
-    const labels = detailedForecast.forecast.timescale
+    const labels = detailedForecast.forecast.labels
 
     const data1 = {
         labels,

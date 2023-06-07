@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
-import { SurfbreakBasicInfo } from "../DummyData"
 
 import '../css/clickableList.css'
+
+import { SurfbreakBasicInfo } from "../types"
 
 export default function ClickableList({ surfbreaks }: { surfbreaks: Array<SurfbreakBasicInfo> }) {
 

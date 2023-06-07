@@ -5,17 +5,19 @@ import '../css/regionalView.css'
 import ClickableList from '../components/ClickableList'
 import SearchBar from '../components/SearchBar'
 import SurfbreakMap from '../components/SurfbreakMap'
-
-import { SurfbreakBasicInfo, surfbreaks } from '../DummyData'
-
+import { getTopBreaks } from '../apis/databaseApi'
+import { SurfbreakBasicInfo } from '../types'
 
 export default function RegionalView() {
-    const [surfbreakBasicInfo, setSurfbreakBasicInfo] = useState<Array<SurfbreakBasicInfo>>([])
+    const [surfbreakBasicInfo, setSurfbreakBasicInfo] = useState<SurfbreakBasicInfo[]>([])
 
     useEffect(() => {
-        // TODO: Fetch from server.
-        setSurfbreakBasicInfo(surfbreaks)
-    })
+        const getBreaks = async () => {
+            const topBreaks = await getTopBreaks()
+            setSurfbreakBasicInfo(topBreaks)
+        }
+        getBreaks()
+    }, [])
 
     return (
         <>
