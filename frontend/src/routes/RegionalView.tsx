@@ -26,7 +26,7 @@ export default function RegionalView() {
                     <SearchBar />
                     <ClickableList surfbreaks={surfbreakBasicInfo} />
                 </section>
-                <SurfbreakMap />
+                <SurfbreakMap surfbreaks={surfbreakBasicInfo} />
             </div>
         </>
     )

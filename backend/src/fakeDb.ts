@@ -64,13 +64,13 @@ const fairhaven: SurfbreakDetailedForecast = {
     basicInfo: {
         id: '9a639a57-aef1-4d43-a2fb-45ce4b99219c',
         name: 'Fairhaven',
-    },
-    location: {
-        region: 'Surf Coast',
-        coordinates: {
-            latitude: -38.46929924935438,
-            longitude: 144.08390766343166
-        }
+        location: {
+            region: 'Surf Coast',
+            coordinates: {
+                lat: -38.46929924935438,
+                lng: 144.08390766343166
+            }
+        },
     },
     forecast: genericForecast
 }
@@ -79,13 +79,13 @@ const lornepoint: SurfbreakDetailedForecast = {
     basicInfo: {
         id: 'eba7ed74-1cc2-4b3a-a472-6bb971a3d778',
         name: 'Lorne Point',
-    },
-    location: {
-        region: 'Surf Coast',
-        coordinates: {
-            latitude: -38.542733,
-            longitude: 143.979457
-        }
+        location: {
+            region: 'Surf Coast',
+            coordinates: {
+                lat: -38.542733,
+                lng: 143.979457
+            }
+        },
     },
     forecast: genericForecast
 }
@@ -94,13 +94,13 @@ const bells: SurfbreakDetailedForecast = {
     basicInfo: {
         id: '11ef0462-1f09-4d2f-9c43-8ba61ef31b7f',
         name: 'Bells Beach',
-    },
-    location: {
-        region: 'Surf Coast',
-        coordinates: {
-            latitude: -38.371725,
-            longitude: 144.283352
-        }
+        location: {
+            region: 'Surf Coast',
+            coordinates: {
+                lat: -38.371725,
+                lng: 144.283352
+            }
+        },
     },
     forecast: genericForecast
 }
@@ -108,14 +108,14 @@ const bells: SurfbreakDetailedForecast = {
 const winki: SurfbreakDetailedForecast = {
     basicInfo: {
         id: 'ad131f93-a07d-4549-acda-a3762a665c6d',
-        name: '',
-    },
-    location: {
-        region: 'Surf Coast',
-        coordinates: {
-            latitude: -38.368730,
-            longitude: 144.286120
-        }
+        name: 'Winki Pop',
+        location: {
+            region: 'Surf Coast',
+            coordinates: {
+                lat: -38.368730,
+                lng: 144.286120
+            }
+        },
     },
     forecast: genericForecast
 }
@@ -124,13 +124,13 @@ const wye: SurfbreakDetailedForecast = {
     basicInfo: {
         id: '7b682dd7-2a6b-4b01-9d79-308d2d12f04d',
         name: 'Wye River',
-    },
-    location: {
-        region: 'Surf Coast',
-        coordinates: {
-            latitude: -38.637388,
-            longitude: 143.894694
-        }
+        location: {
+            region: 'Surf Coast',
+            coordinates: {
+                lat: -38.637388,
+                lng: 143.894694
+            }
+        },
     },
     forecast: genericForecast
 }
@@ -139,13 +139,13 @@ const eastern: SurfbreakDetailedForecast = {
     basicInfo: {
         id: 'eaf150fa-63d3-461b-bf2d-2e528eeb05dd',
         name: 'Eastern View',
-    },
-    location: {
-        region: 'Surf Coast',
-        coordinates: {
-            latitude: -38.473016,
-            longitude: 144.058364
-        }
+        location: {
+            region: 'Surf Coast',
+            coordinates: {
+                lat: -38.473016,
+                lng: 144.058364
+            }
+        },
     },
     forecast: genericForecast
 }
@@ -160,11 +160,71 @@ export const fakeDb: FakeDb = {
         'eaf150fa-63d3-461b-bf2d-2e528eeb05dd': eastern,
     },
     breaks: [
-        { id: '9a639a57-aef1-4d43-a2fb-45ce4b99219c', name: 'Fairhaven' },
-        { id: 'eba7ed74-1cc2-4b3a-a472-6bb971a3d778', name: 'Lorne Point' },
-        { id: '11ef0462-1f09-4d2f-9c43-8ba61ef31b7f', name: 'Bells Beach' },
-        { id: 'ad131f93-a07d-4549-acda-a3762a665c6d', name: 'Winki Pop' },
-        { id: '7b682dd7-2a6b-4b01-9d79-308d2d12f04d', name: 'Wye River' },
-        { id: 'eaf150fa-63d3-461b-bf2d-2e528eeb05dd', name: 'Eastern View' }
+        {
+            id: '9a639a57-aef1-4d43-a2fb-45ce4b99219c',
+            name: 'Fairhaven',
+            location: {
+                region: 'Surf Coast',
+                coordinates: {
+                    lat: -38.46929924935438,
+                    lng: 144.08390766343166
+                }
+            },
+        },
+        {
+            id: 'eba7ed74-1cc2-4b3a-a472-6bb971a3d778',
+            name: 'Lorne Point',
+            location: {
+                region: 'Surf Coast',
+                coordinates: {
+                    lat: -38.542733,
+                    lng: 143.979457
+                }
+            },
+        },
+        {
+            id: '11ef0462-1f09-4d2f-9c43-8ba61ef31b7f',
+            name: 'Bells Beach',
+            location: {
+                region: 'Surf Coast',
+                coordinates: {
+                    lat: -38.371725,
+                    lng: 144.283352
+                }
+            },
+        },
+        {
+            id: 'ad131f93-a07d-4549-acda-a3762a665c6d',
+            name: 'Winki Pop',
+            location: {
+                region: 'Surf Coast',
+                coordinates: {
+                    lat: -38.368730,
+                    lng: 144.286120
+                }
+            },
+        },
+        {
+            id: '7b682dd7-2a6b-4b01-9d79-308d2d12f04d',
+            name: 'Wye River',
+            location: {
+                region: 'Surf Coast',
+                coordinates: {
+                    lat: -38.637388,
+                    lng: 143.894694
+                }
+            },
+        },
+        {
+            id: 'eaf150fa-63d3-461b-bf2d-2e528eeb05dd',
+            name: 'Eastern View',
+            location: {
+                region: 'Surf Coast',
+                coordinates: {
+                    lat: -38.473016,
+                    lng: 144.058364
+                }
+            },
+        }
     ]
 }

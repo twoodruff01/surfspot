@@ -1,20 +1,20 @@
 export interface SurfbreakDetailedForecast {
     basicInfo: SurfbreakBasicInfo,
-    location: {
-        region: string,
-        coordinates: Point
-    },
     forecast: Forecast
 }
 
 export interface SurfbreakBasicInfo {
     name: string
     id: string,  // No type support... should be a uuid
+    location: {
+        region: string,
+        coordinates: Point
+    }
 }
 
 export interface Point {
-    latitude: number,
-    longitude: number
+    lat: number,
+    lng: number
 }
 
 export interface Forecast {
