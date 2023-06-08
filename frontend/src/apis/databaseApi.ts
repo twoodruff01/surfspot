@@ -9,7 +9,7 @@ const instance = axios.create({
  * Get a list of top surf breaks. Would be truncated for bigger application obvs.
  */
 export async function getTopBreaks(): Promise<SurfbreakBasicInfo[]> {
-    const res = await instance.get("/topbreaks");
+    const res = await instance.get('/topbreaks');
     return res.data
 }
 
@@ -18,5 +18,13 @@ export async function getTopBreaks(): Promise<SurfbreakBasicInfo[]> {
  */
 export async function getForecast(id: string): Promise<SurfbreakDetailedForecast> {
     const res = await instance.get(`/forecast/${id}`);
+    return res.data
+}
+
+/**
+ * Not secure.
+ */
+export async function getGoogleMapsApiKey(): Promise<string> {
+    const res = await instance.get('/googleMapsApiKey');
     return res.data
 }

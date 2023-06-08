@@ -5,9 +5,14 @@ import '../css/surfbreakMap.css'
 import { SurfbreakBasicInfo } from '../types';
 import { useNavigate } from 'react-router-dom';
 
-export default function SurfbreakMap({ surfbreaks }: { surfbreaks: Array<SurfbreakBasicInfo> }) {
+/**
+ * Passing key in as a prop is not secure, this is a workaround because I don't know how else to do it and this app
+ *  isn't actually being deployed.
+ * TODO: Figure out how to avoid having the key on the frontend...
+ */
+export default function SurfbreakMap({ surfbreaks, apiKey }: { surfbreaks: Array<SurfbreakBasicInfo>, apiKey: string }) {
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "playing_with_fire"
+        googleMapsApiKey: apiKey
     });
 
     const navigate = useNavigate()
