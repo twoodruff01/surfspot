@@ -1,0 +1,78 @@
+/* ------------------------------- reset styles ------------------------------- */
+button,
+fieldset,
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input {
+    border: 2px solid #333;
+    background-color: white;
+    border-radius: 0.25rem;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    height: 1.5em;
+    width: 1.5em;
+    vertical-align: middle;
+}
+
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+input[type="radio"]:checked {
+    background-image: radial-gradient(hsl(213, 73%, 50%) 40%,
+            transparent calc(40% + 1px));
+}
+
+/* -------------------------------- new styles -------------------------------- */
+
+.suggestionFormWrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.mapWrapper {
+    margin: 1rem;
+}
+
+.suggestForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 30rem;
+    margin: 1rem;
+}
+
+.regionRadios {
+    display: flex;
+    flex-direction: column;
+}
+
+.surfbreakName label {
+    margin: 0.3rem;
+}
+
+.suggestForm button {
+    border: 1px solid #333;
+    color: black;
+    /* background-color: var(--prussian-blue); */
+    /* background-color: var(--pacific-cyan); */
+    background-color: var(--blue-ncs);
+    /* background-color: var(--prussian-blue-2); */
+    border-radius: 0.25rem;
+    margin: 0.2rem;
+}
+
+.suggestForm button:hover {
+    color: white;
+}

@@ -11,6 +11,7 @@ import RegionalView from './routes/RegionalView.tsx';
 import Surfbreak, {
     loader as surfbreakLoader
 } from './routes/Surfbreak.tsx';
+import SuggestSurfbreak from './routes/SuggestSurfbreak.tsx';
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
                 path: 'surfbreaks/:surfbreakId',
                 element: <Surfbreak />,
                 loader: surfbreakLoader
+            },
+            {
+                path: 'surfbreaks/new',
+                element: <SuggestSurfbreak />
             }
         ]
     },

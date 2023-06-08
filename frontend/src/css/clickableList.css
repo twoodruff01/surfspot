@@ -1,16 +1,17 @@
+.clickableList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 .clickableListItem {
     list-style-type: none;
-}
-
-.clickableListItem a {
     text-decoration: none;
     color: black;
+    margin: 0.1rem;
 }
 
-.clickableListItem a:hover {
+.clickableListItem:hover {
     color: white;
 }
-
-/* .clickableListItem a:visited {
-    color: inherit;
-} */

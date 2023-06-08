@@ -1,5 +1,6 @@
 import axios from "axios";
-import { SurfbreakBasicInfo, SurfbreakDetailedForecast } from "../types";
+
+import { NewSurfbreakForm, SurfbreakBasicInfo, SurfbreakDetailedForecast } from "../types";
 
 const instance = axios.create({
     baseURL: 'http://localhost:3000',
@@ -27,4 +28,8 @@ export async function getForecast(id: string): Promise<SurfbreakDetailedForecast
 export async function getGoogleMapsApiKey(): Promise<string> {
     const res = await instance.get('/googleMapsApiKey');
     return res.data
+}
+
+export async function postNewSurfbreak(formData: NewSurfbreakForm) {
+    await instance.post('/surfbreak/new', formData)
 }

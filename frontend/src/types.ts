@@ -30,3 +30,10 @@ export interface Forecast {
 export type Forecasts = {
     [key: string]: SurfbreakDetailedForecast
 }
+
+export interface NewSurfbreakForm {
+    name: string,
+    region: string,
+    lat: number,
+    lng: number
+}

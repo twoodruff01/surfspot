@@ -1,9 +1,9 @@
-.surfmapOverview {
-    height: 60vh;
-    width: 60vw;
-}
-
 .map-container {
     height: 100%;
     width: 100%;
+}
+
+.surfmapOverview {
+    height: 60vh;
+    width: 60vw;
 }

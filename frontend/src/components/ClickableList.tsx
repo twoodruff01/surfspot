@@ -7,14 +7,12 @@ import { SurfbreakBasicInfo } from "../types"
 export default function ClickableList({ surfbreaks }: { surfbreaks: Array<SurfbreakBasicInfo> }) {
 
     return (
-        <ul>
+        <div className="clickableList">
             {surfbreaks.map(e => {
-                return <li key={e.id} className="clickableListItem">
-                    <Link to={`surfbreaks/${e.id}`}>
-                        {e.name}
-                    </Link>
-                </li>
+                return <Link to={`surfbreaks/${e.id}`} className="clickableListItem" key={e.id}>
+                    {e.name}
+                </Link>
             })}
-        </ul>
+        </div>
     )
 }

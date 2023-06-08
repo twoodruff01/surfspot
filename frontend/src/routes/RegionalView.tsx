@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Link } from "react-router-dom"
 
 import '../css/regionalView.css'
-import '../css/surfbreakMap.css'
 
 import ClickableList from '../components/ClickableList'
 import SearchBar from '../components/SearchBar'
@@ -23,14 +23,13 @@ export default function RegionalView() {
     }, [])
 
     return (
-        <>
-            <div className='regionalView'>
-                <section>
-                    <SearchBar />
-                    <ClickableList surfbreaks={surfbreakBasicInfo} />
-                </section>
-                {!key ? (<div className='surfMapOverview'></div>) : (<SurfbreakMap surfbreaks={surfbreakBasicInfo} apiKey={key} />)}
-            </div>
-        </>
+        <div className='regionalView'>
+            <section className='surfbreaksColumn'>
+                <SearchBar />
+                <ClickableList surfbreaks={surfbreakBasicInfo} />
+                <Link to={'/surfbreaks/new'} className='suggestButton'>+ Suggest New Break</Link>
+            </section>
+            {!key ? (<p>Error Loading Map</p>) : (<SurfbreakMap surfbreaks={surfbreakBasicInfo} apiKey={key} />)}
+        </div>
     )
 }

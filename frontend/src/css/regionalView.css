@@ -2,6 +2,20 @@
     height: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+
+.surfbreaksColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: flex-start;
-    margin: 2rem;
+}
+
+.suggestButton {
+    color: silver;
+}
+
+.suggestButton:hover {
+    color: white;
 }
