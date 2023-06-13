@@ -13,7 +13,7 @@ import {
 
 import '../css/surfbreak.css'
 import { SurfbreakDetailedForecast } from "../types";
-import { getForecast } from "../apis/databaseApi";
+import { getBreak, getForecast } from "../apis/databaseApi";
 
 ChartJS.register(
     CategoryScale,
@@ -30,7 +30,10 @@ ChartJS.register(
  *  /surfbreaks/:id
  */
 export async function loader({ params }: { params: any }): Promise<SurfbreakDetailedForecast> {  // Typescript support from react-router-dom seems terrible.
-    return await getForecast(params.surfbreakId)
+    return {
+        basicInfo: await getBreak(params.surfbreakId),
+        forecast: await getForecast(params.surfbreakId)
+    }
 }
 
 export default function SurfBreak() {

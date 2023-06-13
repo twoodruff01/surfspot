@@ -15,5 +15,10 @@ services:
       - ./src/db/sql:/docker-entrypoint-initdb.d
       - surfspot-postgres:/var/lib/postgresql/data
 
+  memcached:
+    image: memcached
+    ports:
+      - "11211:11211"
+
 volumes:
   surfspot-postgres:

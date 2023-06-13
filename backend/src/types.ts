@@ -30,8 +30,3 @@ export interface Forecast {
 export type Forecasts = {
     [key: string]: SurfbreakDetailedForecast
 }
-
-export interface FakeDb {
-    forecasts: Forecasts,
-    breaks: SurfbreakBasicInfo[]
-}

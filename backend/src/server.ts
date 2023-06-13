@@ -1,12 +1,12 @@
 import express, { Express, Request, Response } from 'express';
-import { config } from 'dotenv'
 import cors from 'cors'
-// import { v4 as uuid } from 'uuid'
 
 import { log } from './middleware'
 import * as db from './db/db'
+import * as forecastCache from './forecastCache'
+import { SurfbreakBasicInfo } from './types';
 
-config()
+forecastCache.setupForecastCache()
 
 const port = 3000;
 const app: Express = express();
@@ -21,7 +21,7 @@ app.use(express.json())
 app.get('/topbreaks', async (req: Request, res: Response) => {
     const { rows } = await db.query('SELECT * FROM surfbreak', [])
 
-    const formattedRows = rows.map(e => {
+    const formattedRows: SurfbreakBasicInfo[] = rows.map(e => {
         return {
             name: e.name,
             id: e.id,
@@ -38,25 +38,53 @@ app.get('/topbreaks', async (req: Request, res: Response) => {
     res.send(formattedRows)
 })
 
-// app.get('/forecast/:id', (req: Request, res: Response) => {
-//     let { id } = req.params
-//     // TODO: Get from database.
-//     res.send(fakeDb.forecasts[id])
-// })
+app.get('/surfbreak/:id', async (req: Request, res: Response) => {
+    let { id } = req.params
+
+    const { rows } = await db.query('SELECT * FROM surfbreak WHERE id = $1;', [id])
+
+    const formattedRows: SurfbreakBasicInfo[] = rows.map(e => {
+        return {
+            name: e.name,
+            id: e.id,
+            location: {
+                region: e.region,
+                coordinates: {
+                    lat: Number(e.latitude),
+                    lng: Number(e.longitude)
+                }
+            }
+        }
+    })
+
+    if (formattedRows.length > 1) {
+        console.log(`unexpected duplicate keys from database, how is that possible? id=${id}`)
+    }
+
+    res.send(formattedRows[0])
+})
+
+app.get('/forecast/:id', async (req: Request, res: Response) => {
+    let { id } = req.params
+
+    forecastCache.memcached.get(id, function (err, data) {
+        if (err) {
+            console.log(`forecast id=${id} had error=${err}`)
+        }
+        res.send(data)
+    })
+})
 
 app.post('/surfbreak/new', async (req: Request, res: Response) => {
-    // TODO: Persist the new surf break. That would require a database...
     const { name, region, lat, lng } = req.body
 
-    // TODO: auto create uuid and maybe timestamp in db.
     const query = {
-        text: 'INSERT INTO surfbreak(name, region, latitude, longitude) VALUES($1, $2, $3, $4)',
+        text: 'INSERT INTO surfbreak(name, id, region, latitude, longitude, create_timestamp) VALUES($1, uuid_generate_v4(), $2, $3, $4, current_timestamp)',
         values: [name, region, lat, lng]
     }
 
     const result = await db.query(query.text, query.values)
 
-    console.log(req.body)
     res.status(200).send('OK')
 })
 
